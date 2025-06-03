@@ -206,8 +206,9 @@ async def handle_estrenos_callback(update: Update, context: ContextTypes.DEFAULT
     
     choice = query.data
     
-    await query.edit_message_text(text=f"Buscando {escape_markdown_v2(choice.replace('estrenos_', '').replace('_', ' '))}... ⏳", parse_mode=ParseMode.MARKDOWN_V2)
-
+    text_to_send = f"Buscando {choice.replace('estrenos_', '').replace('_', ' ')}... ⏳"
+    await query.edit_message_text(text=escape_markdown_v2(text_to_send), parse_mode=ParseMode.MARKDOWN_V2)
+    
     params = {}
     title_text = ""
     today = datetime.today()
